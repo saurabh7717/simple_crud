@@ -1,0 +1,28 @@
+{% if cmanagement %}
+	<ul>
+	{% for c in cmanagement %}
+		<li> Name: {{ c.name }}</li>
+		<li> Address: {{ c.address }}</li>
+		<li> Phone: {{ c.phone }}</li>
+		<li> Cost: {{ c.cost }}</li>
+		<li> <a href="{% url 'cmanagement:updates' c.id %}"> Update </a> </li>
+		<li> <a href="{% url 'cmanagement:details' c.id %}"> Details </a></li>
+
+		<br />
+	{% endfor %}	
+	</ul>
+	<form action="{% url 'cmanagement:index' %}" method="post">
+	{% csrf_token %}
+	<select name="delete">
+	{% for c in cmanagement %}
+		<option value="{{c.id}}">{{c.name}}</option>
+	{% endfor %}
+	</select>
+	<input type="Submit" value="Delete" />
+	</form>
+{% else %}
+	<p> No caterer </p>
+{% endif %}
+<br />
+<p><a href="{% url 'cmanagement:insert' %}">Insert </a> </p>
+<p><a href="{% url 'cmanagement:sortcost' %}">Sort Cost </a></p>	

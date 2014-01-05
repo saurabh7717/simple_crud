@@ -1,0 +1,23 @@
+<h2>Insert caterer's details</h2>
+
+{% if error_msg %} <strong>{{ error_msg }} </strong> {% endif %}
+<form action="{% url 'cmanagement:insert' %}" method="post">
+{% csrf_token %}
+
+	<label for="phone">Phone </label>
+	<input type="text" name="phone" id="phone">
+	<br />
+	<label for="address">Address </label>
+	<textarea name="address" id="address">Address here</textarea>
+	<br />
+	<label for="details">Details </label>
+	<textarea name="details" id="details">Details here </textarea>
+	<br />
+	<label for="name">Name </label>
+	<input type="text" name="name" id="name">
+	<br />
+	<label for="cost">Cost </label>
+	<input type="text" name="cost" id="cost">
+	<br />
+	<input type="submit" value="Insert" />
+</form>
